@@ -1,0 +1,302 @@
+/* ==========================================================================
+   🌹 BELOVED - INTERACTIVE BIRTHDAY CAKE & MAKE A WISH (MAROON & BABY PINK)
+   ========================================================================== */
+
+.cake-section {
+  padding-bottom: 70px;
+}
+
+.cake-stage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.cake-assembly {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transform: scale(0.95);
+}
+
+/* Candle & Flame */
+.candle-holder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  margin-bottom: -4px;
+}
+
+.candle-flame {
+  position: relative;
+  width: 16px;
+  height: 30px;
+  background: linear-gradient(180deg, #fff2f5 0%, #ff758f 50%, #ff0054 100%);
+  border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+  box-shadow: 0 0 15px #ff758f, 0 0 35px #ff0054, 0 0 60px rgba(255, 117, 143, 0.6);
+  animation: flicker 1.4s infinite alternate ease-in-out;
+  transform-origin: bottom center;
+  cursor: pointer;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@keyframes flicker {
+  0% {
+    transform: rotate(-2deg) scale(1, 1);
+    filter: brightness(1);
+  }
+
+  25% {
+    transform: rotate(2deg) scale(1.05, 0.95);
+  }
+
+  50% {
+    transform: rotate(-1deg) scale(0.95, 1.05);
+    filter: brightness(1.2);
+  }
+
+  75% {
+    transform: rotate(1deg) scale(1.02, 0.98);
+  }
+
+  100% {
+    transform: rotate(-2deg) scale(1, 1);
+    filter: brightness(1.1);
+  }
+}
+
+.flame-inner {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.candle-flame.blown-out {
+  opacity: 0;
+  transform: scale(0.2) translateY(-20px);
+  pointer-events: none;
+}
+
+/* Smoke puff */
+.candle-smoke {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 204, 213, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 204, 213, 0.5);
+  animation: smokeDrift 2.5s forwards ease-out;
+}
+
+@keyframes smokeDrift {
+  0% {
+    opacity: 0.8;
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translate(-80%, -30px) scale(2.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-30%, -70px) scale(4);
+  }
+}
+
+.candle-stick {
+  width: 12px;
+  height: 46px;
+  background: repeating-linear-gradient(45deg, #ffccd5, #ffccd5 5px, #c9184a 5px, #c9184a 10px);
+  border-radius: 4px;
+  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.candle-stick::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 5px;
+  background: #333;
+}
+
+/* Cake Tiers */
+.cake-tier {
+  position: relative;
+  border-radius: 12px 12px 6px 6px;
+  box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tier-top {
+  width: 140px;
+  height: 58px;
+  background: linear-gradient(180deg, #ffccd5 0%, #ff758f 50%, #800020 100%);
+  z-index: 3;
+}
+
+.frosting-drips {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.frosting-drips span {
+  width: 16px;
+  height: 16px;
+  background: #fff0f5;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.frosting-drips span:nth-child(even) {
+  height: 22px;
+}
+
+.tier-toppings {
+  position: absolute;
+  top: -12px;
+  font-size: 1rem;
+  letter-spacing: 10px;
+}
+
+.tier-middle {
+  width: 200px;
+  height: 72px;
+  background: linear-gradient(180deg, #ff758f 0%, #a4133c 50%, #590d22 100%);
+  margin-top: -6px;
+  z-index: 2;
+  border-top: 3px solid #fff0f5;
+}
+
+.tier-pearls {
+  position: absolute;
+  bottom: 6px;
+  color: var(--color-pink-light);
+  font-size: 0.7rem;
+  letter-spacing: 8px;
+  opacity: 0.9;
+}
+
+.tier-bottom {
+  width: 260px;
+  height: 84px;
+  background: linear-gradient(180deg, #c9184a 0%, #800020 50%, #350412 100%);
+  margin-top: -6px;
+  z-index: 1;
+  border-top: 4px solid #fff0f5;
+}
+
+.cake-plate {
+  position: absolute;
+  bottom: -12px;
+  width: 290px;
+  height: 16px;
+  background: linear-gradient(180deg, #ffccd5 0%, #c9184a 50%, #590d22 100%);
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 182, 193, 0.3);
+}
+
+/* Action Button */
+.cake-action-wrapper {
+  margin-top: 16px;
+}
+
+.btn-cake-wish {
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Wish Granted Modal */
+.wish-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.wish-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wish-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(35, 2, 10, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.wish-modal-card {
+  position: relative;
+  color: rgb(253, 204, 212);
+  z-index: 2;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  padding: 36px 24px;
+  background: linear-gradient(135deg, rgba(88, 8, 30, 0.96) 0%, rgba(45, 3, 14, 0.98) 100%);
+  border: 1px solid var(--border-pink);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), var(--glow-pink);
+  animation: modalPopIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wish-confetti-badge {
+  font-size: 2.6rem;
+  margin-bottom: 12px;
+}
+
+.wish-granted-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 5vw, 1.8rem);
+  color: var(--color-pink-light);
+  margin-bottom: 12px;
+}
+
+.wish-granted-message {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-text-main);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
